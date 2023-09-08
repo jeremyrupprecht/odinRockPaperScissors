@@ -100,20 +100,24 @@ Pseudocode: ...
 
 function checkPlayerChoiceValidity(choice) {
 
+    if (choice === null) {
+        return false
+    }
+
     choice = choice.toLowerCase();
 
     switch(choice) {
         case "rock":
-            return true;
+            return true
 
         case "paper":
-            return true;
+            return true
 
         case "scissors":
-            return true;
+            return true
 
         default:
-            return false;
+            return false
     }
 }
 
@@ -143,11 +147,11 @@ function game() {
         // 2. If player choice is invalid, prompt the player again
         let pChoice = getPlayerChoice() 
         if (!(checkPlayerChoiceValidity(pChoice))) {
-            console.log("Your choice is of the incorrect form, please choose either 'Rock' or 'Paper' or 'Scissors'")
+            console.log("Your choice is of the incorrect form or null, please choose either 'Rock' or 'Paper' or 'Scissors'")
             continue;
         }
 
-        console.log("Correct Choice")
+        console.log(`Your choice is ${pChoice}`)
 
         gameCounter = gameCounter + 1;
 
