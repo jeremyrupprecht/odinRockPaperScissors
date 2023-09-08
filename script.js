@@ -71,7 +71,7 @@ function playRound(playerSelection, computerSelection) {
 
     //1. and //2 combined
     if (playerSelection === computerSelection) {
-        return `Tie! ${playerSelection} ties ${computerSelection}`
+        return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
     } else {
         if ((playerSelection === "rock" && computerSelection === "scissors")
             || (playerSelection === "scissors" && computerSelection === "paper")
@@ -140,22 +140,39 @@ function game() {
 
     // 1. 
     let gameCounter = 0;
-    let keepGameGoing = true
+    let keepGameGoing = true;
+    let playerScore = 0;
+    let computerScore = 0;
 
     while (keepGameGoing) {
 
         // 2. If player choice is invalid, prompt the player again
 
-        let pChoice = getPlayerChoice() 
-        if (!(checkPlayerChoiceValidity(pChoice))) {
+        let playerChoice = getPlayerChoice() 
+
+        if (!(checkPlayerChoiceValidity(playerChoice))) {
             console.log("Your choice is of the incorrect form or null, please choose either 'Rock' or 'Paper' or 'Scissors'")
             continue;
         }
 
-        console.log(`Your choice is ${pChoice}`)
-
         // 3. 
 
+        let computerChoice = getComputerChoice();
+        console.log(`Your choice is ${playerChoice}`)
+        console.log(`The computer's choice is ${computerChoice}`)
+
+        let result = playRound(playerChoice, computerChoice);
+
+        //4. and 5.
+
+        console.log(result)
+        if (result.includes("Tie")) {
+           continue;
+        } else if (result.includes("Win")) {
+            playerScore += 1;
+        } else {
+            computerScore += 1;
+        }
 
         gameCounter = gameCounter + 1;
 
