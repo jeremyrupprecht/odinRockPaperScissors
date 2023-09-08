@@ -174,10 +174,21 @@ function game() {
             computerScore += 1;
         }
 
+        console.log(`The Current Scores are: Player: ${playerScore}, Computer: ${computerScore}`)
+
+        // 6. 
+
         gameCounter = gameCounter + 1;
 
         if (gameCounter >= 5) {
             keepGameGoing = false;
+
+            if (playerScore > computerScore) {
+                console.log(`Game over! You won with a final score of: ${playerScore} to the computers: ${computerScore}`)
+            } else {
+                console.log(`Game over! You lost with a final score of: ${playerScore} to the computers: ${computerScore}`)
+            }
+
         }
 
     }
