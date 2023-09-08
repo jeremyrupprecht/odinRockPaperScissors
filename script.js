@@ -84,7 +84,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 /*
-Pseudocode: This function grabs 
+Pseudocode: This function retrives input from the player
 
 */
 
@@ -98,8 +98,9 @@ Pseudocode: This function plays 5 rounds of rock paper scissors
             tracking the score and reporting a winner or loser 
             at the end of the 5 rounds
     1. loop 5 times
-    2. retrive player response 
-    3. play the game each time
+    2. retrive player response (and check it for validity, ask the 
+        player again if they enter in an invalid choice)
+    3. play the game
     4. retrieve the result of each round, if it's a tie, 
        replay the round without taking up a round of the 5
     5. update the score each time
@@ -110,12 +111,23 @@ Pseudocode: This function plays 5 rounds of rock paper scissors
 function game() {
 
     // 1. 
+    let gameCounter = 0;
+    let keepGameGoing = true
 
-    for (let i = 0; i < 5; i++) {
-        
+    while (keepGameGoing) {
+
         // 2. 
+        let pChoice = getPlayerChoice() 
+
+
+        gameCounter = gameCounter + 1;
+
+        if (gameCounter >= 5) {
+            keepGameGoing = false
+        }
 
     }
+
     
 }
 
@@ -139,3 +151,5 @@ const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
 */
+
+game();
