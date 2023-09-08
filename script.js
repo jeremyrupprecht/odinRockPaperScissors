@@ -28,8 +28,8 @@ Problem solving:
 
 /*
 Pseudocode: This function generates the computers signal choice
-    1. generate a random number between 1-3 (or 0-2)
-    2. return the string "Rock" or "Paper" or "Scissors"
+    1. Generate a random number between 1-3 (or 0-2)
+    2. Return the string "Rock" or "Paper" or "Scissors"
        based on the random number
 
 */
@@ -58,7 +58,7 @@ Pseudocode: This function computes the players signal choice
             against the computers signal choice and returns 
             the resulting winner
     1. Compare the player choice agaisnt the computer choice
-    2. return the winning choice based on the rules of rock paper 
+    2. Return the winning choice based on the rules of rock paper 
        scissors
            -if there is a tie, return that result
 
@@ -125,14 +125,14 @@ function checkPlayerChoiceValidity(choice) {
 Pseudocode: This function plays 5 rounds of rock paper scissors
             tracking the score and reporting a winner or loser 
             at the end of the 5 rounds
-    1. loop 5 times
-    2. retrive player response (and check it for validity, ask the 
+    1. Loop 5 times
+    2. Retrive player response (and check it for validity, ask the 
         player again if they enter in an invalid choice)
-    3. play the game
-    4. retrieve the result of each round, if it's a tie, 
+    3. Play the game
+    4. Retrieve the result of each round, if it's a tie, 
        replay the round without taking up a round of the 5
-    5. update the score each time
-    6. at the end of the 5 loops, display the winner and loser 
+    5. Update the score each time
+    6. At the end of the 5 loops, display the winner and loser 
        (or a tie?)
 */
 
@@ -145,6 +145,7 @@ function game() {
     while (keepGameGoing) {
 
         // 2. If player choice is invalid, prompt the player again
+
         let pChoice = getPlayerChoice() 
         if (!(checkPlayerChoiceValidity(pChoice))) {
             console.log("Your choice is of the incorrect form or null, please choose either 'Rock' or 'Paper' or 'Scissors'")
@@ -153,10 +154,13 @@ function game() {
 
         console.log(`Your choice is ${pChoice}`)
 
+        // 3. 
+
+
         gameCounter = gameCounter + 1;
 
         if (gameCounter >= 5) {
-            keepGameGoing = false
+            keepGameGoing = false;
         }
 
     }
