@@ -84,28 +84,47 @@ function playRound(playerSelection, computerSelection) {
 }
 
 /*
+Pseudocode: This function grabs 
+
+*/
+
+function getPlayerChoice() {
+    let choice = prompt("Enter One of Three Choices (Rock, Paper, or Scissors)");
+    return choice;
+}
+
+/*
 Pseudocode: This function plays 5 rounds of rock paper scissors
             tracking the score and reporting a winner or loser 
             at the end of the 5 rounds
     1. loop 5 times
-    2. play the game each time
-    3. retrieve the result of each round, if it's a tie, 
+    2. retrive player response 
+    3. play the game each time
+    4. retrieve the result of each round, if it's a tie, 
        replay the round without taking up a round of the 5
-    4. update the score each time
-    5. at the end of the 5 loops, display the winner and loser 
+    5. update the score each time
+    6. at the end of the 5 loops, display the winner and loser 
        (or a tie?)
 */
 
 function game() {
+
+    // 1. 
+
+    for (let i = 0; i < 5; i++) {
+        
+        // 2. 
+
+    }
     
 }
 
+// Player vs Computer logic testing
+/*
 console.log(playRound("Rock", "Rock"))
 console.log(playRound("Rock", "Paper"))
 console.log(playRound("Rock", "Scissors"))
 console.log("------------------------------")
-
-
 console.log(playRound("Paper", "Rock"))
 console.log(playRound("Paper", "Paper"))
 console.log(playRound("Paper", "Scissors"))
@@ -113,3 +132,10 @@ console.log("------------------------------")
 console.log(playRound("Scissors", "Rock"))
 console.log(playRound("Scissors", "Paper"))
 console.log(playRound("Scissors", "Scissors"))
+*/
+
+/*
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+*/
