@@ -1,5 +1,3 @@
-console.log("Testing!")
-
 /* 
 
 Problem solving:
@@ -38,6 +36,21 @@ Pseudocode: This function generates the computers signal choice
 
 function getComputerChoice() {
 
+    // 1.
+
+    let random = Math.random() * 3;
+
+    // 2.
+
+    if (random < 1) {
+        return "Rock"
+    } else if (random >= 1 && random < 2) {
+        return "Paper"
+    } else {
+        return "Scissors"
+    }
+
+
 }
 
 /*
@@ -69,3 +82,6 @@ Pseudocode: This function plays 5 rounds of rock paper scissors
 function game() {
     
 }
+
+let choice = getComputerChoice();
+console.log(choice)
