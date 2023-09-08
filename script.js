@@ -94,6 +94,30 @@ function getPlayerChoice() {
 }
 
 /*
+Pseudocode: ...
+
+*/
+
+function checkPlayerChoiceValidity(choice) {
+
+    choice = choice.toLowerCase();
+
+    switch(choice) {
+        case "rock":
+            return true;
+
+        case "paper":
+            return true;
+
+        case "scissors":
+            return true;
+
+        default:
+            return false;
+    }
+}
+
+/*
 Pseudocode: This function plays 5 rounds of rock paper scissors
             tracking the score and reporting a winner or loser 
             at the end of the 5 rounds
@@ -116,9 +140,14 @@ function game() {
 
     while (keepGameGoing) {
 
-        // 2. 
+        // 2. If player choice is invalid, prompt the player again
         let pChoice = getPlayerChoice() 
+        if (!(checkPlayerChoiceValidity(pChoice))) {
+            console.log("Your choice is of the incorrect form, please choose either 'Rock' or 'Paper' or 'Scissors'")
+            continue;
+        }
 
+        console.log("Correct Choice")
 
         gameCounter = gameCounter + 1;
 
