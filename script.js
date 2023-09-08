@@ -40,7 +40,7 @@ function getComputerChoice() {
 
     let random = Math.random() * 3;
 
-    // 2.
+    // 2. 
 
     if (random < 1) {
         return "Rock"
@@ -61,9 +61,26 @@ Pseudocode: This function computes the players signal choice
     2. return the winning choice based on the rules of rock paper 
        scissors
            -if there is a tie, return that result
+
+    -note: Rock beats scissors, scissors beats paper, and paper beats rock
 */
 function playRound(playerSelection, computerSelection) {
 
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
+    //1. and //2 combined
+    if (playerSelection === computerSelection) {
+        return `Tie! ${playerSelection} ties ${computerSelection}`
+    } else {
+        if ((playerSelection === "rock" && computerSelection === "scissors")
+            || (playerSelection === "scissors" && computerSelection === "paper")
+            || (playerSelection === "paper" && computerSelection === "rock")) {
+            return `You Win! ${playerSelection} beats ${computerSelection}`
+        } else {
+            return `You Lose! ${computerSelection} beats ${playerSelection}`
+        }
+    }
 }
 
 /*
@@ -83,5 +100,16 @@ function game() {
     
 }
 
-let choice = getComputerChoice();
-console.log(choice)
+console.log(playRound("Rock", "Rock"))
+console.log(playRound("Rock", "Paper"))
+console.log(playRound("Rock", "Scissors"))
+console.log("------------------------------")
+
+
+console.log(playRound("Paper", "Rock"))
+console.log(playRound("Paper", "Paper"))
+console.log(playRound("Paper", "Scissors"))
+console.log("------------------------------")
+console.log(playRound("Scissors", "Rock"))
+console.log(playRound("Scissors", "Paper"))
+console.log(playRound("Scissors", "Scissors"))
