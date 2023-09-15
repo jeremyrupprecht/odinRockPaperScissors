@@ -84,7 +84,6 @@ function checkPlayerChoiceValidity(choice) {
 This function plays 5 rounds of rock paper scissors. Round ties and invalid
 player inputs do not count as full rounds and are replayed
 */
-
 function playGame() {
 
     let roundCounter = 0;
