@@ -19,11 +19,11 @@ function getRandomComputerChoice() {
     let random = Math.random() * 3;
 
     if (random < 1) {
-        return "Rock"
+        return "rock"
     } else if (random >= 1 && random < 2) {
-        return "Paper"
+        return "paper"
     } else {
-        return "Scissors"
+        return "scissors"
     }
 
 
@@ -140,23 +140,25 @@ function playGame() {
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const roundResult = document.querySelector("#displayRoundResult");
+console.log(roundResult);
 
 rockBtn.addEventListener("click", () => {
     let computerChoice = getRandomComputerChoice();
     let outputMsg = playRound("rock", computerChoice);
-    console.log(outputMsg);
+    roundResult.textContent = outputMsg;
 });
 
 paperBtn.addEventListener("click", () => {
     let computerChoice = getRandomComputerChoice();
     let outputMsg = playRound("paper", computerChoice);
-    console.log(outputMsg);
+    roundResult.textContent = outputMsg;
 });
 
 scissorsBtn.addEventListener("click", () => {
     let computerChoice = getRandomComputerChoice();
     let outputMsg = playRound("scissors", computerChoice);
-    console.log(outputMsg);
+    roundResult.textContent = outputMsg;
 });
 
 
