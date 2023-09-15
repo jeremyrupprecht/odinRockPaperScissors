@@ -29,7 +29,9 @@ function getRandomComputerChoice() {
 
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+
+    let computerSelection = getRandomComputerChoice();
 
     if (playerSelection === computerSelection) {
         return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
@@ -141,27 +143,18 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const roundResult = document.querySelector("#displayRoundResult");
-console.log(roundResult);
 
 rockBtn.addEventListener("click", () => {
-    let computerChoice = getRandomComputerChoice();
-    let outputMsg = playRound("rock", computerChoice);
+    let outputMsg = playRound("rock");
     roundResult.textContent = outputMsg;
 });
 
 paperBtn.addEventListener("click", () => {
-    let computerChoice = getRandomComputerChoice();
-    let outputMsg = playRound("paper", computerChoice);
+    let outputMsg = playRound("paper");
     roundResult.textContent = outputMsg;
 });
 
 scissorsBtn.addEventListener("click", () => {
-    let computerChoice = getRandomComputerChoice();
-    let outputMsg = playRound("scissors", computerChoice);
+    let outputMsg = playRound("scissors");
     roundResult.textContent = outputMsg;
 });
-
-
-
-playGame();
-
