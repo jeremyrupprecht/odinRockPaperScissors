@@ -31,10 +31,6 @@ function getRandomComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    // Account for case sensitivity
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-
     if (playerSelection === computerSelection) {
         return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
     } else {
@@ -146,18 +142,21 @@ const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 
 rockBtn.addEventListener("click", () => {
-    //playRound();
-
+    let computerChoice = getRandomComputerChoice();
+    let outputMsg = playRound("rock", computerChoice);
+    console.log(outputMsg);
 });
 
 paperBtn.addEventListener("click", () => {
-    //playRound();
-
+    let computerChoice = getRandomComputerChoice();
+    let outputMsg = playRound("paper", computerChoice);
+    console.log(outputMsg);
 });
 
 scissorsBtn.addEventListener("click", () => {
-    //playRound();
-
+    let computerChoice = getRandomComputerChoice();
+    let outputMsg = playRound("scissors", computerChoice);
+    console.log(outputMsg);
 });
 
 
