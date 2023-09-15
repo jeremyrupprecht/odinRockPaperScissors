@@ -86,7 +86,7 @@ player inputs do not count as full rounds and are replayed
 */
 function playGame() {
 
-    
+
 
     /*
 
@@ -141,5 +141,26 @@ function playGame() {
     */
 }
 
-//
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+rockBtn.addEventListener("click", () => {
+    //playRound();
+
+});
+
+paperBtn.addEventListener("click", () => {
+    //playRound();
+
+});
+
+scissorsBtn.addEventListener("click", () => {
+    //playRound();
+
+});
+
+
+
 playGame();
+
