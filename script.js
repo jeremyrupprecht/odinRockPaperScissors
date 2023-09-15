@@ -47,35 +47,14 @@ function playRound(playerSelection) {
     }
 }
 
-function getPlayerChoice() {
-    let choice = prompt("Enter One of Three Choices (Rock, Paper, or Scissors)");
-    return choice;
-}
+function incrementScore(result, playerScore, computerScore) {
+    if (result.includes("Win")) {
+         playerScore += 1;
+     } else if (result.includes("Lose")) {
+         computerScore += 1;
+     }
 
-/*
-This function checks the player signal choice for null input, case sensitivty and spelling
-*/
-function checkPlayerChoiceValidity(choice) {
-
-    if (choice === null) {
-        return false
-    }
-
-    choice = choice.toLowerCase();
-
-    switch(choice) {
-        case "rock":
-            return true
-
-        case "paper":
-            return true
-
-        case "scissors":
-            return true
-
-        default:
-            return false
-    }
+     return [playerScore, computerScore];
 }
 
 /*
@@ -138,6 +117,9 @@ function playGame() {
 
     */
 }
+
+let playerScore = 0;
+let computerScore = 0;
 
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
