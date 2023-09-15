@@ -86,6 +86,10 @@ player inputs do not count as full rounds and are replayed
 */
 function playGame() {
 
+    
+
+    /*
+
     let roundCounter = 0;
     let keepGameGoing = true;
     let playerScore = 0;
@@ -134,7 +138,7 @@ function playGame() {
 
     }
 
-    
+    */
 }
 
 //
