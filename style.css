@@ -1,3 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    text-align: center;
+}
+
+.mainBody {
+    text-align: center;
+}
+
 #playAgain {
     display: none;
+}
+
+.footer {
+    text-align: center;
 }
