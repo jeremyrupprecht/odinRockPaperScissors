@@ -29,24 +29,6 @@ function getRandomComputerChoice() {
 
 }
 
-function playRound(playerSelection) {
-
-    let computerSelection = getRandomComputerChoice();
-
-    if (playerSelection === computerSelection) {
-        return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
-    } else {
-        // Rock beats scissors, scissors beats paper, and paper beats rock
-        if ((playerSelection === "rock" && computerSelection === "scissors")
-            || (playerSelection === "scissors" && computerSelection === "paper")
-            || (playerSelection === "paper" && computerSelection === "rock")) {
-            return `You Win! ${playerSelection} beats ${computerSelection}`
-        } else {
-            return `You Lose! ${computerSelection} beats ${playerSelection}`
-        }
-    }
-}
-
 function incrementScoreAndRound(result, playerScore, computerScore, roundCounter) {
     if (result.includes("Win")) {
          playerScore += 1;
@@ -72,6 +54,37 @@ function checkGameOver(roundCounter, playerScore, computerScore) {
     } else {
         return "";
     }
+}
+
+function getRoundWinner(playerSelection) {
+
+    let computerSelection = getRandomComputerChoice();
+
+    if (playerSelection === computerSelection) {
+        return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
+    } else {
+        // Rock beats scissors, scissors beats paper, and paper beats rock
+        if ((playerSelection === "rock" && computerSelection === "scissors")
+            || (playerSelection === "scissors" && computerSelection === "paper")
+            || (playerSelection === "paper" && computerSelection === "rock")) {
+            return `You Win! ${playerSelection} beats ${computerSelection}`
+        } else {
+            return `You Lose! ${computerSelection} beats ${playerSelection}`
+        }
+    }
+}
+
+function playRound(playerSelection) {
+    let outputMsg = getRoundWinner(playerSelection);
+    roundResult.textContent = outputMsg;
+    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
+    playerScore = updatedScoresAndRound[0];
+    computerScore = updatedScoresAndRound[1];
+    roundCounter = updatedScoresAndRound[2];
+    playerScoreDiv.textContent = `Player: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    currentRound.textContent = `Round: ${roundCounter}`;
+    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
 }
 
 /*
@@ -149,40 +162,13 @@ const computerScoreDiv = document.querySelector("#computerScore");
 const gameOver = document.querySelector("#displayGameOver");
 
 rockBtn.addEventListener("click", () => {
-    let outputMsg = playRound("rock");
-    roundResult.textContent = outputMsg;
-    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
-    playerScore = updatedScoresAndRound[0];
-    computerScore = updatedScoresAndRound[1];
-    roundCounter = updatedScoresAndRound[2];
-    playerScoreDiv.textContent = `Player: ${playerScore}`;
-    computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    currentRound.textContent = `Round: ${roundCounter}`;
-    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
+    playRound("rock");
 });
 
 paperBtn.addEventListener("click", () => {
-    let outputMsg = playRound("paper");
-    roundResult.textContent = outputMsg;
-    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
-    playerScore = updatedScoresAndRound[0];
-    computerScore = updatedScoresAndRound[1];
-    roundCounter = updatedScoresAndRound[2];
-    playerScoreDiv.textContent = `Player: ${playerScore}`;
-    computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    currentRound.textContent = `Round: ${roundCounter}`;
-    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
+    playRound("paper");
 });
 
 scissorsBtn.addEventListener("click", () => {
-    let outputMsg = playRound("scissors");
-    roundResult.textContent = outputMsg;
-    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
-    playerScore = updatedScoresAndRound[0];
-    computerScore = updatedScoresAndRound[1];
-    roundCounter = updatedScoresAndRound[2];
-    playerScoreDiv.textContent = `Player: ${playerScore}`;
-    computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    currentRound.textContent = `Round: ${roundCounter}`;
-    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
+    playRound("scissors");
 });
