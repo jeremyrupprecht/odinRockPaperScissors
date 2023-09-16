@@ -29,7 +29,7 @@ function getRandomComputerChoice() {
 
 }
 
-function incrementScoreAndRound(result, playerScore, computerScore, roundCounter) {
+function incrementScoreAndRound(result) {
     if (result.includes("Win")) {
          playerScore += 1;
          roundCounter += 1;
@@ -77,10 +77,7 @@ function getRoundWinner(playerSelection) {
 function playRound(playerSelection) {
     let outputMsg = getRoundWinner(playerSelection);
     roundResult.textContent = outputMsg;
-    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
-    playerScore = updatedScoresAndRound[0];
-    computerScore = updatedScoresAndRound[1];
-    roundCounter = updatedScoresAndRound[2];
+    incrementScoreAndRound(outputMsg);
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     currentRound.textContent = `Round: ${roundCounter}`;
