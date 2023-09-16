@@ -72,6 +72,14 @@ function getRoundWinner(playerSelection) {
     }
 }
 
+function togglePlayAgainButton(element) {
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+}
+
 function playRound(playerSelection) {
     let outputMsg = getRoundWinner(playerSelection);
     roundResult.textContent = outputMsg;
@@ -79,7 +87,15 @@ function playRound(playerSelection) {
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     currentRound.textContent = `Round: ${roundCounter}`;
-    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
+    let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
+    gameOver.textContent = gameOverStatus;
+    if (gameOverStatus) {
+        togglePlayAgainButton(rockBtn);
+        togglePlayAgainButton(paperBtn);
+        togglePlayAgainButton(scissorsBtn);
+    }
+    
+
 }
 
 /*
