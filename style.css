@@ -1,15 +1,33 @@
 body {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #253347;
+    margin: 0px;
 }
 
 .header {
     text-align: center;
+    background-color: #111720;
+    color: yellow;
+    width: 100%;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace
 }
 
 .mainBody {
     text-align: center;
+    margin-top: auto;
 }
 
 #playAgain {
@@ -18,4 +36,5 @@ body {
 
 .footer {
     text-align: center;
+    margin-top: auto;
 }
