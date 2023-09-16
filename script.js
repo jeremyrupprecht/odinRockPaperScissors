@@ -37,8 +37,6 @@ function incrementScoreAndRound(result) {
          computerScore += 1;
          roundCounter += 1;
      }
-
-     return [playerScore, computerScore, roundCounter];
 }
 
 function checkGameOver(roundCounter, playerScore, computerScore) {
