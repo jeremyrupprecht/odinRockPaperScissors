@@ -47,14 +47,31 @@ function playRound(playerSelection) {
     }
 }
 
-function incrementScore(result, playerScore, computerScore) {
+function incrementScoreAndRound(result, playerScore, computerScore, roundCounter) {
     if (result.includes("Win")) {
          playerScore += 1;
+         roundCounter += 1;
      } else if (result.includes("Lose")) {
          computerScore += 1;
+         roundCounter += 1;
      }
 
-     return [playerScore, computerScore];
+     return [playerScore, computerScore, roundCounter];
+}
+
+function checkGameOver(roundCounter, playerScore, computerScore) {
+
+    if (roundCounter >= 5) {
+
+        if (playerScore > computerScore) {
+            return(`Game over! You won with a final score of: ${playerScore} to the computers: ${computerScore}`)
+        } else {
+            return(`Game over! You lost with a final score of: ${playerScore} to the computers: ${computerScore}`)
+        }
+
+    } else {
+        return "";
+    }
 }
 
 /*
@@ -120,43 +137,52 @@ function playGame() {
 
 let playerScore = 0;
 let computerScore = 0;
+let roundCounter = 0;
 
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const roundResult = document.querySelector("#displayRoundResult");
+const currentRound = document.querySelector("#currentRound");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
+const gameOver = document.querySelector("#displayGameOver");
 
 rockBtn.addEventListener("click", () => {
     let outputMsg = playRound("rock");
     roundResult.textContent = outputMsg;
-    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
-    playerScore = updatedScores[0];
-    computerScore = updatedScores[1];
+    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
+    playerScore = updatedScoresAndRound[0];
+    computerScore = updatedScoresAndRound[1];
+    roundCounter = updatedScoresAndRound[2];
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
-;
+    currentRound.textContent = `Round: ${roundCounter}`;
+    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
 });
 
 paperBtn.addEventListener("click", () => {
     let outputMsg = playRound("paper");
     roundResult.textContent = outputMsg;
-    incrementScore(outputMsg, playerScore, computerScore);
-    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
-    playerScore = updatedScores[0];
-    computerScore = updatedScores[1];
+    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
+    playerScore = updatedScoresAndRound[0];
+    computerScore = updatedScoresAndRound[1];
+    roundCounter = updatedScoresAndRound[2];
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    currentRound.textContent = `Round: ${roundCounter}`;
+    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
 });
 
 scissorsBtn.addEventListener("click", () => {
     let outputMsg = playRound("scissors");
     roundResult.textContent = outputMsg;
-    incrementScore(outputMsg, playerScore, computerScore);
-    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
-    playerScore = updatedScores[0];
-    computerScore = updatedScores[1];
+    let updatedScoresAndRound = incrementScoreAndRound(outputMsg, playerScore, computerScore, roundCounter);
+    playerScore = updatedScoresAndRound[0];
+    computerScore = updatedScoresAndRound[1];
+    roundCounter = updatedScoresAndRound[2];
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    currentRound.textContent = `Round: ${roundCounter}`;
+    gameOver.textContent = checkGameOver(roundCounter, playerScore, computerScore);
 });
