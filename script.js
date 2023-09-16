@@ -72,12 +72,15 @@ function getRoundWinner(playerSelection) {
     }
 }
 
-function togglePlayAgainButton(element) {
+function toggleButtonVisibility(element) {
+
     if (element.style.display === "none") {
+      console.log(element);
       element.style.display = "block";
     } else {
       element.style.display = "none";
     }
+
 }
 
 function playRound(playerSelection) {
@@ -90,9 +93,10 @@ function playRound(playerSelection) {
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
     gameOver.textContent = gameOverStatus;
     if (gameOverStatus) {
-        togglePlayAgainButton(rockBtn);
-        togglePlayAgainButton(paperBtn);
-        togglePlayAgainButton(scissorsBtn);
+        toggleButtonVisibility(rockBtn);
+        toggleButtonVisibility(paperBtn);
+        toggleButtonVisibility(scissorsBtn);
+        toggleButtonVisibility(playAgainBtn);
     }
     
 
@@ -171,6 +175,8 @@ const currentRound = document.querySelector("#currentRound");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
 const gameOver = document.querySelector("#displayGameOver");
+const playAgainBtn = document.querySelector("#playAgain");
+playAgainBtn.style.display = "none";
 
 rockBtn.addEventListener("click", () => {
     playRound("rock");
