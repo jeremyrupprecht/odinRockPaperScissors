@@ -75,21 +75,35 @@ function getRoundWinner(playerSelection) {
 function toggleButtonVisibility(element) {
 
     if (element.style.display === "none") {
-      console.log(element);
-      element.style.display = "block";
+      element.style.display = "inline";
     } else {
       element.style.display = "none";
     }
 
 }
 
-function playRound(playerSelection) {
-    let outputMsg = getRoundWinner(playerSelection);
-    roundResult.textContent = outputMsg;
-    incrementScoreAndRound(outputMsg);
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    roundCounter = 0;
+    toggleButtonVisibility(rockBtn);
+    toggleButtonVisibility(paperBtn);
+    toggleButtonVisibility(scissorsBtn);
+    toggleButtonVisibility(playAgainBtn);
+    currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    roundResult.textContent = "";
+    gameOver.textContent = "";
+}
+
+function playRound(playerSelection) {
+    let outputMsg = getRoundWinner(playerSelection);
+    incrementScoreAndRound(outputMsg);
     currentRound.textContent = `Round: ${roundCounter}`;
+    playerScoreDiv.textContent = `Player: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    roundResult.textContent = outputMsg;
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
     gameOver.textContent = gameOverStatus;
     if (gameOverStatus) {
@@ -98,8 +112,6 @@ function playRound(playerSelection) {
         toggleButtonVisibility(scissorsBtn);
         toggleButtonVisibility(playAgainBtn);
     }
-    
-
 }
 
 /*
@@ -189,3 +201,8 @@ paperBtn.addEventListener("click", () => {
 scissorsBtn.addEventListener("click", () => {
     playRound("scissors");
 });
+
+playAgainBtn.addEventListener("click", () => {
+    resetGame();
+});
+
