@@ -11,13 +11,8 @@ Description:
     of the computer. After 5 rounds, the resulting winner is displayed to the screen
 */
 
-/*
-This function generates the computers random signal choice
-*/
 function getRandomComputerChoice() {
-
     let random = Math.random() * 3;
-
     if (random < 1) {
         return "rock"
     } else if (random >= 1 && random < 2) {
@@ -25,8 +20,6 @@ function getRandomComputerChoice() {
     } else {
         return "scissors"
     }
-
-
 }
 
 function incrementScoreAndRound(result) {
@@ -40,24 +33,19 @@ function incrementScoreAndRound(result) {
 }
 
 function checkGameOver(roundCounter, playerScore, computerScore) {
-
     if (roundCounter >= 5) {
-
         if (playerScore > computerScore) {
             return(`Game over! You won with a final score of: ${playerScore} to the computers: ${computerScore}`)
         } else {
             return(`Game over! You lost with a final score of: ${playerScore} to the computers: ${computerScore}`)
         }
-
     } else {
         return "";
     }
 }
 
 function getRoundWinner(playerSelection) {
-
     let computerSelection = getRandomComputerChoice();
-
     if (playerSelection === computerSelection) {
         return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
     } else {
@@ -79,7 +67,6 @@ function toggleButtonVisibility(element) {
     } else {
       element.style.display = "none";
     }
-
 }
 
 function resetGame() {
@@ -100,10 +87,12 @@ function resetGame() {
 function playRound(playerSelection) {
     let outputMsg = getRoundWinner(playerSelection);
     incrementScoreAndRound(outputMsg);
+    // Update UI
     currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     roundResult.textContent = outputMsg;
+    // Handle game over's, which occur at the end of 5 rounds
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
     gameOver.textContent = gameOverStatus;
     if (gameOverStatus) {
@@ -114,66 +103,6 @@ function playRound(playerSelection) {
     }
 }
 
-/*
-This function plays 5 rounds of rock paper scissors. Round ties and invalid
-player inputs do not count as full rounds and are replayed
-*/
-function playGame() {
-
-
-
-    /*
-
-    let roundCounter = 0;
-    let keepGameGoing = true;
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while (keepGameGoing) {
-
-        let playerChoice = getPlayerChoice() 
-
-        //If player choice is invalid, prompt the player again without incrementing the round counter
-        if (!(checkPlayerChoiceValidity(playerChoice))) {
-            console.log("Your choice is of the incorrect form or null, please choose either 'Rock' or 'Paper' or 'Scissors'")
-            continue;
-        }
-
-        let computerChoice = getRandomComputerChoice();
-        console.log(`Your choice is ${playerChoice}`)
-        console.log(`The computer's choice is ${computerChoice}`)
-
-        let result = playRound(playerChoice, computerChoice);
-
-        //If the round is a tie, retry the round without incrementing the round counter
-        console.log(result)
-        if (result.includes("Tie")) {
-           continue;
-        } else if (result.includes("Win")) {
-            playerScore += 1;
-        } else {
-            computerScore += 1;
-        }
-
-        console.log(`The Current Scores are: Player: ${playerScore}, Computer: ${computerScore}`)
-
-        roundCounter = roundCounter + 1;
-
-        if (roundCounter >= 5) {
-            keepGameGoing = false;
-
-            if (playerScore > computerScore) {
-                console.log(`Game over! You won with a final score of: ${playerScore} to the computers: ${computerScore}`)
-            } else {
-                console.log(`Game over! You lost with a final score of: ${playerScore} to the computers: ${computerScore}`)
-            }
-
-        }
-
-    }
-
-    */
-}
 
 let playerScore = 0;
 let computerScore = 0;
