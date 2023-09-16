@@ -125,18 +125,38 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const roundResult = document.querySelector("#displayRoundResult");
+const playerScoreDiv = document.querySelector("#playerScore");
+const computerScoreDiv = document.querySelector("#computerScore");
 
 rockBtn.addEventListener("click", () => {
     let outputMsg = playRound("rock");
     roundResult.textContent = outputMsg;
+    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
+    playerScore = updatedScores[0];
+    computerScore = updatedScores[1];
+    playerScoreDiv.textContent = `Player: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer: ${computerScore}`;
+;
 });
 
 paperBtn.addEventListener("click", () => {
     let outputMsg = playRound("paper");
     roundResult.textContent = outputMsg;
+    incrementScore(outputMsg, playerScore, computerScore);
+    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
+    playerScore = updatedScores[0];
+    computerScore = updatedScores[1];
+    playerScoreDiv.textContent = `Player: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer: ${computerScore}`;
 });
 
 scissorsBtn.addEventListener("click", () => {
     let outputMsg = playRound("scissors");
     roundResult.textContent = outputMsg;
+    incrementScore(outputMsg, playerScore, computerScore);
+    let updatedScores = incrementScore(outputMsg, playerScore, computerScore);
+    playerScore = updatedScores[0];
+    computerScore = updatedScores[1];
+    playerScoreDiv.textContent = `Player: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer: ${computerScore}`;
 });
