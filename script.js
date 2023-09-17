@@ -14,19 +14,19 @@ Description:
 function getRandomComputerChoice() {
     let random = Math.random() * 3;
     if (random < 1) {
-        return "rock"
+        return "Rock"
     } else if (random >= 1 && random < 2) {
-        return "paper"
+        return "Paper"
     } else {
-        return "scissors"
+        return "Scissors"
     }
 }
 
 function incrementScoreAndRound(result) {
-    if (result.includes("Win")) {
+    if (result.includes("Won")) {
          playerScore += 1;
          roundCounter += 1;
-     } else if (result.includes("Lose")) {
+     } else if (result.includes("Lost")) {
          computerScore += 1;
          roundCounter += 1;
      }
@@ -47,21 +47,20 @@ function checkGameOver(roundCounter, playerScore, computerScore) {
 function getRoundWinner(playerSelection) {
     let computerSelection = getRandomComputerChoice();
     if (playerSelection === computerSelection) {
-        return `Tie! ${playerSelection} ties ${computerSelection}, play again!`
+        return(["Its a Tie!",`${playerSelection} ties with ${computerSelection}`]);
     } else {
         // Rock beats scissors, scissors beats paper, and paper beats rock
-        if ((playerSelection === "rock" && computerSelection === "scissors")
-            || (playerSelection === "scissors" && computerSelection === "paper")
-            || (playerSelection === "paper" && computerSelection === "rock")) {
-            return `You Win! ${playerSelection} beats ${computerSelection}`
+        if ((playerSelection === "Rock" && computerSelection === "Scissors")
+            || (playerSelection === "Scissors" && computerSelection === "Paper")
+            || (playerSelection === "Paper" && computerSelection === "Rock")) {
+            return(["You Won!",`${playerSelection} beats ${computerSelection}`]);
         } else {
-            return `You Lose! ${computerSelection} beats ${playerSelection}`
+            return(["You Lost!",`${playerSelection} beats ${computerSelection}`]);
         }
     }
 }
 
 function toggleButtonVisibility(element) {
-
     if (element.style.display === "none") {
       element.style.display = "inline";
     } else {
@@ -70,7 +69,7 @@ function toggleButtonVisibility(element) {
 }
 
 function resetGame() {
-    roundResult.textContent = "Choose a hand";
+    roundResult1.textContent = "Choose a hand";
     playerScore = 0;
     computerScore = 0;
     roundCounter = 0;
@@ -86,12 +85,13 @@ function resetGame() {
 
 function playRound(playerSelection) {
     let outputMsg = getRoundWinner(playerSelection);
-    incrementScoreAndRound(outputMsg);
+    incrementScoreAndRound(outputMsg[0]);
     // Update UI
     currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    roundResult.textContent = outputMsg;
+    roundResult1.textContent = outputMsg[0];
+    roundResult2.textContent = outputMsg[1];
     // Handle game over's, which occur at the end of 5 rounds
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
     gameOver.textContent = gameOverStatus;
@@ -111,7 +111,8 @@ let roundCounter = 0;
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
-const roundResult = document.querySelector("#displayRoundResult");
+const roundResult1 = document.querySelector("#displayRoundResult1");
+const roundResult2 = document.querySelector("#displayRoundResult2");
 const currentRound = document.querySelector("#currentRound");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
@@ -120,15 +121,15 @@ const playAgainBtn = document.querySelector("#playAgain");
 playAgainBtn.style.display = "none";
 
 rockBtn.addEventListener("click", () => {
-    playRound("rock");
+    playRound("Rock");
 });
 
 paperBtn.addEventListener("click", () => {
-    playRound("paper");
+    playRound("Paper");
 });
 
 scissorsBtn.addEventListener("click", () => {
-    playRound("scissors");
+    playRound("Scissors");
 });
 
 playAgainBtn.addEventListener("click", () => {
