@@ -70,6 +70,7 @@ function toggleButtonVisibility(element) {
 }
 
 function resetGame() {
+    roundResult.textContent = "Choose a hand";
     playerScore = 0;
     computerScore = 0;
     roundCounter = 0;
@@ -80,7 +81,6 @@ function resetGame() {
     currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    roundResult.textContent = "";
     gameOver.textContent = "";
 }
 

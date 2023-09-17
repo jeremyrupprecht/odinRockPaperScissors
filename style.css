@@ -17,13 +17,13 @@ body {
 .header {
     text-align: center;
     background-color: #111720;
-    color: yellow;
     width: 100%;
 }
 
 .title {
     font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
+    color: #fac650;
+
 }
 
 .mainBody {
