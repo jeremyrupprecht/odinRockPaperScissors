@@ -70,6 +70,7 @@ function toggleButtonVisibility(element) {
 
 function resetGame() {
     roundResult1.textContent = "Choose a hand";
+    roundResult2.textContent = "First to score 5 points wins the game";
     playerScore = 0;
     computerScore = 0;
     roundCounter = 0;
@@ -77,7 +78,6 @@ function resetGame() {
     toggleButtonVisibility(paperBtn);
     toggleButtonVisibility(scissorsBtn);
     toggleButtonVisibility(playAgainBtn);
-    currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     gameOver.textContent = "";
@@ -87,7 +87,6 @@ function playRound(playerSelection) {
     let outputMsg = getRoundWinner(playerSelection);
     incrementScoreAndRound(outputMsg[0]);
     // Update UI
-    currentRound.textContent = `Round: ${roundCounter}`;
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     roundResult1.textContent = outputMsg[0];
@@ -113,7 +112,6 @@ const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const roundResult1 = document.querySelector("#displayRoundResult1");
 const roundResult2 = document.querySelector("#displayRoundResult2");
-const currentRound = document.querySelector("#currentRound");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
 const gameOver = document.querySelector("#displayGameOver");
