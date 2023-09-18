@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     color: white;
+    font-size: 20px;
 }
 
 .container {
@@ -29,6 +30,22 @@ body {
 .mainBody {
     text-align: center;
     margin-top: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.scoreBox {
+    display: inline-block;
+    margin: 50px 50px 0px 40px;
+}
+
+.handDisplay {
+    display: block;
+    font-size: 72px;
+    margin: 0px 50px 15px 50px;
+}
+
+button:hover {
+    background-color: #4d5053;
 }
 
 .handButton {
@@ -36,7 +53,10 @@ body {
     height: 150px;
     width: 150px;
     background-color: #1a222e;
-    outline: none;
+    border-radius: 20px;   
+    margin: 50px 15px;
+    transition-duration: 0.1s;
+    border: none;  
 }
 
 #playAgain {
