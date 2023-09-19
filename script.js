@@ -35,9 +35,9 @@ function incrementScoreAndRound(result) {
 function checkGameOver(roundCounter, playerScore, computerScore) {
     if (roundCounter >= 5) {
         if (playerScore > computerScore) {
-            return(`Game over! You won with a final score of: ${playerScore} to the computers: ${computerScore}`)
+            return(`Game over! You won with a final score of ${playerScore} to the computers ${computerScore}`)
         } else {
-            return(`Game over! You lost with a final score of: ${playerScore} to the computers: ${computerScore}`)
+            return(`Game over! You lost with a final score of ${playerScore} to the computers ${computerScore}`)
         }
     } else {
         return "";
@@ -70,7 +70,7 @@ function getEmojiHand(handSelection) {
     }
 }
 
-function toggleButtonVisibility(element) {
+function toggleVisibility(element) {
     if (element.style.display === "none") {
       element.style.display = "inline";
     } else {
@@ -84,13 +84,14 @@ function resetGame() {
     playerScore = 0;
     computerScore = 0;
     roundCounter = 0;
-    toggleButtonVisibility(rockBtn);
-    toggleButtonVisibility(paperBtn);
-    toggleButtonVisibility(scissorsBtn);
-    toggleButtonVisibility(playAgainBtn);
+    toggleVisibility(rockBtn);
+    toggleVisibility(paperBtn);
+    toggleVisibility(scissorsBtn);
+    toggleVisibility(playAgainBtn);
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
-    gameOver.textContent = "";
+    gameOver.textContent = "Game over! You won with a final score of 0 to the computers 0";
+    gameOver.style.visibility = "hidden";
 }
 
 function playRound(playerSelection) {
@@ -107,12 +108,13 @@ function playRound(playerSelection) {
     computerHandDisplay.textContent = getEmojiHand(computerSelection);
     // Handle game over's, which occur at the end of 5 rounds
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
-    gameOver.textContent = gameOverStatus;
     if (gameOverStatus) {
-        toggleButtonVisibility(rockBtn);
-        toggleButtonVisibility(paperBtn);
-        toggleButtonVisibility(scissorsBtn);
-        toggleButtonVisibility(playAgainBtn);
+        toggleVisibility(rockBtn);
+        toggleVisibility(paperBtn);
+        toggleVisibility(scissorsBtn);
+        toggleVisibility(playAgainBtn);
+        gameOver.textContent = gameOverStatus;
+        gameOver.style.visibility = "visible";
     }
 }
 

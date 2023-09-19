@@ -38,14 +38,14 @@ body {
     margin: 50px 50px 0px 40px;
 }
 
+.scoreSection {
+    margin-bottom: 20px;
+}
+
 .handDisplay {
     display: block;
     font-size: 72px;
     margin: 0px 50px 15px 50px;
-}
-
-button:hover {
-    background-color: #4d5053;
 }
 
 .handButton {
@@ -53,14 +53,32 @@ button:hover {
     height: 150px;
     width: 150px;
     background-color: #1a222e;
-    border-radius: 20px;   
-    margin: 50px 15px;
     transition-duration: 0.1s;
+    border-radius: 20px;   
+    margin: 40px 15px;
     border: none;  
 }
 
 #playAgain {
     display: none;
+    background-color: #1a222e;
+    transition-duration: 0.1s;
+    border-radius: 20px;   
+    border: none;  
+    color: white;
+    height: 150px;
+    width: 523px;
+    font-size: 20px;
+    margin: 40px 15px;
+}
+
+button:hover, #playAgain:hover {
+    background-color: #4d5053;
+}
+
+#displayGameOver {
+    margin: 0px;
+    visibility: hidden;
 }
 
 .footer {
