@@ -1,6 +1,6 @@
 /* 
 Author: Jeremy Rupprecht
-Date: 2023-09-09
+Date: 2023-09-18
 Description: 
     This script implements a trivial console only based version of the game Rock
     Paper Scissors. The game is played between a person and a computer where
@@ -33,6 +33,7 @@ function incrementScoreAndRound(result) {
 }
 
 function checkGameOver(roundCounter, playerScore, computerScore) {
+    // Game overs occur at 5 games
     if (roundCounter >= 5) {
         if (playerScore > computerScore) {
             return(`Game over! You won with a final score of ${playerScore} to the computers ${computerScore}`)
@@ -88,8 +89,12 @@ function resetGame() {
     toggleVisibility(paperBtn);
     toggleVisibility(scissorsBtn);
     toggleVisibility(playAgainBtn);
+    playerHandDisplay.textContent = "❔";
+    computerHandDisplay.textContent = "❔";
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
+    // Keep this message as is (but hidden) to preserve spacing in the page,
+    // as opposed to using "display: none" which alters the spacing of the page.
     gameOver.textContent = "Game over! You won with a final score of 0 to the computers 0";
     gameOver.style.visibility = "hidden";
 }
