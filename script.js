@@ -44,8 +44,7 @@ function checkGameOver(roundCounter, playerScore, computerScore) {
     }
 }
 
-function getRoundWinner(playerSelection) {
-    let computerSelection = getRandomComputerChoice();
+function getRoundWinner(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return(["Its a Tie!",`${playerSelection} ties with ${computerSelection}`]);
     } else {
@@ -57,6 +56,17 @@ function getRoundWinner(playerSelection) {
         } else {
             return(["You Lost!",`${playerSelection} beats ${computerSelection}`]);
         }
+    }
+}
+
+function getEmojiHand(handSelection) {
+    console.log(handSelection);
+    if (handSelection === "Rock") {
+        return "✊";
+    } else if (handSelection === "Paper") {
+        return "✋";
+    } else {
+        return "✌";
     }
 }
 
@@ -84,13 +94,17 @@ function resetGame() {
 }
 
 function playRound(playerSelection) {
-    let outputMsg = getRoundWinner(playerSelection);
+    //Play round
+    let computerSelection = getRandomComputerChoice();
+    let outputMsg = getRoundWinner(playerSelection, computerSelection);
     incrementScoreAndRound(outputMsg[0]);
     // Update UI
     playerScoreDiv.textContent = `Player: ${playerScore}`;
     computerScoreDiv.textContent = `Computer: ${computerScore}`;
     roundResult1.textContent = outputMsg[0];
     roundResult2.textContent = outputMsg[1];
+    playerHandDisplay.textContent = getEmojiHand(playerSelection);
+    computerHandDisplay.textContent = getEmojiHand(computerSelection);
     // Handle game over's, which occur at the end of 5 rounds
     let gameOverStatus = checkGameOver(roundCounter, playerScore, computerScore);
     gameOver.textContent = gameOverStatus;
@@ -112,6 +126,8 @@ const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const roundResult1 = document.querySelector("#displayRoundResult1");
 const roundResult2 = document.querySelector("#displayRoundResult2");
+const playerHandDisplay = document.querySelector("#playerHandDisplay");
+const computerHandDisplay = document.querySelector("#computerHandDisplay");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
 const gameOver = document.querySelector("#displayGameOver");
